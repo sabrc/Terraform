@@ -1,0 +1,137 @@
+
+              TERRAFORM
+             (Dünya biçimi)
+  *** https://registry.terraform.io/modules/sabrc/docker-instance/aws/latest
+https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/file
+export PS1="\e[1;31m\u@\h \W\$ \e[0m"
+sudo yum update -y
+sudo yum install -y yum-utils
+sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
+sudo yum -y install terraform
+terraform version 
+aws configure
+terraform init
+terraform plan
+terraform apply
+terraform destroy
+export PS1="\[\e[1;34m\]\u\[\e[33m\]@\h# \W:\[\e[32m\]\\$\[\e[m\] "
+ export PS1="\\[\e[1;31m\]\\u\[\\e[33m\]@\h#\W:\[\e[32m\]\\\$ \[\e[m\]"
+ export PS1="\[\e[01;36m\][\t]\[\e[01;32m\]\u\[\\e[01;34m\][\W]\`if [ \$? = 0 ]; then echo -e '\\[\e[01;32m\]:)'; else echo -e '\[\e[01;31m\];('; fi\` \[\e[01;34m\]$\[\e[00m\] "
+
+sudo yum install tree -y   tree seklinde gormek icin
+https://developer.hashicorp.com/terraform/language/expressions/conditionals
+https://developer.hashicorp.com/terraform/language/meta-arguments/for_each
+https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record
+https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/file
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "4.8.0"
+    }
+  }
+}
+
+provider "aws" {
+  region  = "us-east-1"
+}
+
+terraform apply:
+
++ create:
+
+
+
+.CI&CD (Sürekli entegrasyon ve Sürekli Dağıtım) .
+
+ec2-user@ip-172-31-25-5 ~$ terraform -help
+Usage: terraform [global options] <subcommand> [args]
+
+The available commands for execution are listed below.
+The primary workflow commands are given first, followed by
+less common or more advanced commands.
+
+Main commands:
+  init          Prepare your working directory for other commands
+  validate      Check whether the configuration is valid
+  plan          Show changes required by the current configuration
+  apply         Create or update infrastructure
+  destroy       Destroy previously-created infrastructure
+
+All other commands:
+  console       Try Terraform expressions at an interactive command prompt
+  fmt           Reformat your configuration in the standard style
+  force-unlock  Release a stuck lock on the current workspace
+  get           Install or upgrade remote Terraform modules
+  graph         Generate a Graphviz graph of the steps in an operation
+  import        Associate existing infrastructure with a Terraform resource
+  login         Obtain and save credentials for a remote host
+  logout        Remove locally-stored credentials for a remote host
+  output        Show output values from your root module
+  providers     Show the providers required for this configuration
+  refresh       Update the state to match remote systems
+  show          Show the current state or a saved plan
+  state         Advanced state management
+  taint         Mark a resource instance as not fully functional
+  test          Experimental support for module integration testing
+  untaint       Remove the 'tainted' state from a resource instance
+  version       Show the current Terraform version
+  workspace     Workspace management
+
+Global options (use these before the subcommand, if any):
+  -chdir=DIR    Switch to a different working directory before executing the
+                given subcommand.
+  -help         Show this help output, or the help for a specified subcommand.
+  -version      An alias for the "version" subcommand.
+
+
+
+ terraform -help
+Kullanım: terraform [global seçenekler] <alt komut> [args]
+
+Yürütme için mevcut komutlar aşağıda listelenmiştir.
+Önce birincil iş akışı komutları verilir, ardından
+daha az yaygın veya daha gelişmiş komutlar.
+
+Ana komutlar:
+   init Çalışma dizininizi diğer komutlar için hazırlayın
+   valide Yapılandırmanın geçerli olup olmadığını kontrol edin
+   plan Geçerli yapılandırmanın gerektirdiği değişiklikleri göster
+   uygula Altyapı oluştur veya güncelle
+   yok et Önceden oluşturulmuş altyapıyı yok et
+
+Diğer tüm komutlar:
+   konsol Etkileşimli bir komut isteminde Terraform ifadelerini deneyin
+   fmt Yapılandırmanızı standart stilde yeniden biçimlendirin
+   zorla açma Geçerli çalışma alanında takılı kalmış bir kilidi serbest bırakın
+   Uzak Terraform modüllerini kurun veya yükseltin
+   grafik Bir işlemdeki adımların bir Graphviz grafiğini oluşturun
+   Mevcut altyapıyı bir Terraform kaynağıyla ilişkilendirin
+   Uzak bir ana bilgisayar için kimlik bilgilerini alın ve kaydedin
+   Uzak bir ana bilgisayar için yerel olarak depolanan kimlik bilgilerini kaldırın
+   output Kök modülünüzden çıktı değerlerini gösterin
+   sağlayıcılar Bu yapılandırma için gereken sağlayıcıları göster
+   yenileme Durumu uzak sistemlerle eşleşecek şekilde güncelleyin
+   mevcut durumu veya kaydedilmiş bir planı göster
+   durum Gelişmiş durum yönetimi
+   taint Bir kaynak örneğini tamamen işlevsel değil olarak işaretle
+   test Modül entegrasyon testi için deneysel destek
+   untaint Bir kaynak örneğinden 'kusurlu' durumu kaldırın
+   sürüm Geçerli Terraform sürümünü göster
+   çalışma alanı Çalışma alanı yönetimi
+
+Genel seçenekler (varsa alt komuttan önce bunları kullanın):
+   -chdir=DIR Çalıştırmadan önce farklı bir çalışma dizinine geçin
+                 verilen alt komut
+   -help Bu yardım çıktısını veya belirli bir alt komut için yardımı gösterir.
+   -version "version" alt komutu için bir takma ad.
+
+
+terraform da loops  (döngüler )
+
+Terraform ile sunulan döngüler nedir görelim:
+
+count= parametresi, kaynaklar ve modüller üzerinde döngü oluşturmak için kullanılır.
+for_each= ifadeleri, kaynaklar, kaynak içindeki satır içi bloklar ve modüller üzerinde döngü oluşturmak için kullanılır.
+for= ifadesi, listeler ve mapler üzerinde döngü oluşturmak için kullanılır.
+string directive= ile, bir dize içindeki listelerin ve maplerin üzerinde döngü yapmak içi kullanılır.
